@@ -1,0 +1,22 @@
+{
+  "name": "Feedly-Notifier",
+  "description": "Feedly notifier is a tiny extension that keeps you up to date with your feedly subscriptions.",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-string-replace": "~0.2.4",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-zip": "~0.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/olsh/Feedly-Notifier-Opera.git"
+  },
+  "author": "Oleg Shevchenko",
+  "bugs": {
+    "url": "https://github.com/olsh/Feedly-Notifier-Opera/issues"
+  },
+  "sourcePath": "src",
+  "buildPath": "build"
+}
