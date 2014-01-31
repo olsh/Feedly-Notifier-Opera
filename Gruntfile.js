@@ -53,16 +53,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        uglify: {
-            dist: {
-                files: {
-                    "<%= pkg.buildPath %>/scripts/core.js": ["<%= pkg.buildPath %>/scripts/core.js"],
-                    "<%= pkg.buildPath %>/scripts/feedly.api.js": ["<%= pkg.buildPath %>/scripts/feedly.api.js"],
-                    "<%= pkg.buildPath %>/scripts/options.js": ["<%= pkg.buildPath %>/scripts/options.js"],
-                    "<%= pkg.buildPath %>/scripts/popup.js": ["<%= pkg.buildPath %>/scripts/popup.js"]
-                }
-            }
-        },
         zip: {
             build: {
                 cwd: "<%= pkg.buildPath %>/",
@@ -83,11 +73,10 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks('grunt-string-replace');
-    grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks('grunt-zip');
     grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask("build", ["clean:pre-build", "copy", "string-replace:keys", "uglify", "zip", "clean:build"]);
+    grunt.registerTask("build", ["clean:pre-build", "copy", "string-replace:keys", "zip", "clean:build"]);
     grunt.registerTask("sandbox", ["copy", "string-replace"]);
     grunt.registerTask("default", ["copy", "string-replace:keys"]);
 };
