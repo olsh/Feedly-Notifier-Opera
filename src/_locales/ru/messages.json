@@ -77,6 +77,9 @@
     "OldestFeedsFirst": {
         "message": "Показывать старые записи первыми"
     },
+    "OpenAllFeeds": {
+        "message": "Открыть все новости"
+    },
     "OpenSiteOnIconClick": {
         "message": "Открывать сайт Feedly по нажатию на иконку (не показывать всплывающее окно)"
     },
@@ -106,6 +109,9 @@
     },
     "ShowFullFeedContent": {
         "message": "Показывать полное содержание статьи при раскрытии новости (если возможно)"
+    },
+    "UpdateFeeds": {
+        "message": "Обновить"
     },
     "UpdateFollowingCategories": {
         "message": "Обновлять только следующие категории"
