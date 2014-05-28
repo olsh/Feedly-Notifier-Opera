@@ -357,13 +357,9 @@ function updateFeeds(callback){
                     });
 
                     appGlobal.cachedFeeds = appGlobal.cachedFeeds.splice(0, appGlobal.options.maxNumberOfFeeds);
-                    filterByNewFeeds(appGlobal.cachedFeeds, function (newFeeds) {});
-                    if (typeof callback === "function") {
-                        callback();
-                    }
                 }
             },
-            onAuthorizationRequired: function () {
+            onComplete: function(){
                 if (typeof callback === "function") {
                     callback();
                 }
