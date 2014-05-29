@@ -325,6 +325,7 @@ function updateFeeds(callback){
     var requestCount = streamIds.length;
     for(var i = 0; i < streamIds.length; i++){
         apiRequestWrapper("streams/" + encodeURIComponent(streamIds[i]) + "/contents", {
+            timeout: 7000, // Prevent infinite loading
             parameters: {
                 unreadOnly: true,
                 count: appGlobal.options.maxNumberOfFeeds,
@@ -491,6 +492,7 @@ function getFeeds(forceUpdate, callback) {
         updateFeeds(function () {
             callback(appGlobal.cachedFeeds.slice(0), appGlobal.isLoggedIn);
         }, true);
+        updateCounter();
     }
 }
 
@@ -703,7 +705,7 @@ function apiRequestWrapper(methodName, settings) {
         if (typeof onSuccess === "function") {
             onSuccess(response);
         }
-    }
+    };
 
     var onAuthorizationRequired = settings.onAuthorizationRequired;
 
@@ -718,7 +720,7 @@ function apiRequestWrapper(methodName, settings) {
         if (typeof onAuthorizationRequired === "function") {
             onAuthorizationRequired(accessToken);
         }
-    }
+    };
 
     appGlobal.feedlyApiClient.request(methodName, settings);
 }
