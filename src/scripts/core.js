@@ -2,6 +2,7 @@
 
 var appGlobal = {
     feedlyApiClient: new FeedlyApiClient(),
+    isInitialized: false,
     icons: {
         default: "/images/icon.png",
         inactive: "/images/icon_inactive.png"
@@ -78,8 +79,19 @@ chrome.storage.onChanged.addListener(function (changes, areaName) {
 });
 
 chrome.runtime.onStartup.addListener(function () {
+    appGlobal.isInitialized = true;
     readOptions(initialize);
 });
+
+/* The dirty hack for preventing the bug https://github.com/olsh/Feedly-Notifier-Opera/issues/1
+*  It should be removed in the next versions.
+* */
+setTimeout(function () {
+    if (!appGlobal.isInitialized) {
+        appGlobal.isInitialized = true;
+        readOptions(initialize);
+    }
+}, 1000);
 
 /* Listener for adding or removing feeds on the feedly website */
 chrome.webRequest.onCompleted.addListener(function (details) {
