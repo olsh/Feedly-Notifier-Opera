@@ -7,6 +7,4 @@ Opera extension for reading news from rss aggregator [Feedly](http://www.feedly.
 
 **Changelog**
 
-v1.0.0 (2014.01.29)
-
-- Initial release
+Changelog can be found [here](http://olsh.github.io/Feedly-Notifier/changelog/opera/).
