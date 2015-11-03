@@ -5,8 +5,14 @@ var appGlobal = {
     isInitialized: false,
     feedTab: null,
     icons: {
-        default: "/images/icon.png",
-        inactive: "/images/icon_inactive.png"
+        default: {
+            "19": "/images/icon.png",
+            "38": "/images/icon38.png"
+        },
+        inactive: {
+            "19": "/images/icon_inactive.png",
+            "38": "/images/icon_inactive38.png"
+        }
     },
     options: {
         _updateInterval: 10, //minutes
@@ -652,10 +658,11 @@ function toggleSavedFeed(feedId, saveFeed, callback) {
  * then read access token and stores in chrome.storage */
 function getAccessToken() {
     var state = (new Date()).getTime();
+    var redirectUri = "https://olsh.github.io/Feedly-Notifier";
     var url = appGlobal.feedlyApiClient.getMethodUrl("auth/auth", {
         response_type: "code",
         client_id: appGlobal.clientId,
-        redirect_uri: "http://localhost",
+        redirect_uri: redirectUri,
         scope: "https://cloud.feedly.com/subscriptions",
         state: state
     }, appGlobal.options.useSecureConnection);
@@ -678,7 +685,7 @@ function getAccessToken() {
                         code: matches[1],
                         client_id: appGlobal.clientId,
                         client_secret: appGlobal.clientSecret,
-                        redirect_uri: "http://localhost",
+                        redirect_uri: redirectUri,
                         grant_type: "authorization_code"
                     },
                     onSuccess: function (response) {
@@ -689,7 +696,6 @@ function getAccessToken() {
                         }, function () {
                         });
                         chrome.tabs.onUpdated.removeListener(processCode);
-                        chrome.tabs.update(authorizationTab.id, {url: chrome.extension.getURL("options.html")});
                     }
                 });
             }
