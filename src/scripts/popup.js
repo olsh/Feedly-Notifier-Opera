@@ -2,7 +2,7 @@
 
 var popupGlobal = {
     //Determines lists of supported jQuery.timeago localizations, default localization is en
-    supportedTimeAgoLocales: ["ru", "fr", "pt-BR", "it", "cs"],
+    supportedTimeAgoLocales: ["ru", "fr", "sr"],
     feeds: [],
     savedFeeds: [],
     backgroundPage: chrome.extension.getBackgroundPage()
